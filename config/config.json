@@ -1,7 +1,7 @@
 {
     "development": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://localhost:27017/chat-clone"
+        "MONGODB_URI": "mongodb+srv://jareddls:QR17AkKCx6xSFIrd@chat-clone-1yirv.mongodb.net/test?retryWrites=true&w=majority"
     },
     "production": {
         "PORT": 80,
