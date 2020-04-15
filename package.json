@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/petre24/chat-clone/issues"
   },
-  "homepage": "https://github.com/petre24/chat-clone#readme"
+  "homepage": "https://github.com/petre24/chat-clone#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.9"
+  }
 }
