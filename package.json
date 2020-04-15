@@ -1,0 +1,19 @@
+{
+  "name": "chat-clone",
+  "version": "1.0.0",
+  "description": "This is an application mimicking a live chat where users will be able to log in and: send messages to whoever is online, see which other users are online, see who's typing, and edit their own personal settings. -test addition",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petre24/chat-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petre24/chat-clone/issues"
+  },
+  "homepage": "https://github.com/petre24/chat-clone#readme"
+}
