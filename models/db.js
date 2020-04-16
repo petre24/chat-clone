@@ -1,9 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //checks if we can connect to mongodb database
-mongoose.connect(process.env.MONGODB_URI, (err) => {
-    if (!err) { console.log('MongoDB connection succeeded.'); }
-    else { console.log('Error in MongoDB connection : ' + JSON.stringify(err, undefined, 2)); } 
-});
 
-require('./user.model'); //we need this file to work in tandem with the user.controller.js
+// database configuration
+const db = require("../config/config.json").development.MONGODB_URI;
+
+mongoose
+  .connect(db, {
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
+  .then(() => console.log("MongoDB connection succeeded"))
+  .catch((err) => console.log(err));
+
+require("./user.model"); //we need this file to work in tandem with the user.controller.js
