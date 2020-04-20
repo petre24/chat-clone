@@ -1,31 +1,38 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/user.model');// this parts gotta go
+const User = require("../models/user.model"); // this parts gotta go
 
-//gets every single user in the database
-router.get('/', async (req,res) => {
-    try{
-        const user = await User.find();
-        res.json(user);
-    }catch(err){
-        res.send(err);
-    }
+// @route  GET register
+// @desc   gets all users in the database
+// @access Public
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.send(err);
+  }
 });
 
-//finds a user by their username.
-router.get('/:userId', async (req,res) =>{
-    const id = await User.findById(req.body.userId);
-    res.json(post);
+// @route  GET register/:id
+// @desc   gets a single user by the specified id
+// @access Public
+router.get("/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.json(user);
 });
 
-router.post('/', async (req,res) =>{
-    const user = new User({
-        fullName: req.body.fullName,
-        password: req.body.password,
-        email: req.body.email
-    });
-    const savedUser = await user.save(); //this returns a promise
-    res.json(savedUser);
+// @route  POST register
+// @desc   adds a new user to the database
+// @access Public
+router.post("/", async (req, res) => {
+  const user = new User({
+    fullName: req.body.fullName,
+    password: req.body.password,
+    email: req.body.email,
+  });
+  const savedUser = await user.save(); //this returns a promise
+  res.json(savedUser);
 });
 
 module.exports = router;
