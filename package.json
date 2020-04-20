@@ -4,7 +4,11 @@
   "description": "This is an application mimicking a live chat where users will be able to log in and: send messages to whoever is online, see which other users are online, see who's typing, and edit their own personal settings. -test addition",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client-install": "npm install --prefix client",
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,18 @@
   "bugs": {
     "url": "https://github.com/petre24/chat-clone/issues"
   },
-  "homepage": "https://github.com/petre24/chat-clone#readme"
+  "homepage": "https://github.com/petre24/chat-clone#readme",
+  "dependencies": {
+    "@pusher/chatkit-server": "^2.4.0",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.9",
+    "pusher": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
 }
