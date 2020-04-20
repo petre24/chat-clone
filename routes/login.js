@@ -13,9 +13,9 @@ router.get('/', async (req,res) => {
 });
 
 //finds a user by their username.
-router.get('/:postId', async (req,res) =>{
-    const userId = await User.findById(req.body.postId);
-    res.json(userId);
+router.get('/:userId', async (req,res) =>{
+    const id = await User.findById(req.body.postId);
+    res.json(id);
 });
 
 router.post('/', async (req,res) =>{
