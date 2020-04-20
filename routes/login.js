@@ -5,8 +5,8 @@ const User = require('../models/user.model');// this parts gotta go
 //gets every single user in the database
 router.get('/', async (req,res) => {
     try{
-        const posts = await User.find();
-        res.json(posts);
+        const user = await User.find();
+        res.json(user);
     }catch(err){
         res.send(err);
     }
@@ -14,8 +14,8 @@ router.get('/', async (req,res) => {
 
 //finds a user by their username.
 router.get('/:postId', async (req,res) =>{
-    const post = await User.findById(req.body.postId);
-    res.json(post);
+    const userId = await User.findById(req.body.postId);
+    res.json(userId);
 });
 
 router.post('/', async (req,res) =>{
@@ -24,8 +24,8 @@ router.post('/', async (req,res) =>{
         password: req.body.password,
         email: req.body.email
     });
-    const savedPost = await post.save(); //this returns a promise
-    res.json(savedPost);
+    const user = await post.save(); //this returns a promise
+    res.json(user);
 });
 
 module.exports = router;
