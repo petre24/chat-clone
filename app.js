@@ -10,6 +10,8 @@ const Pusher = require("pusher");
 // Define Routers
 const rtsIndex = require("./routes/index.router");
 const usersRouter = require("./routes/api/users");
+const loginRouter = require("./routes/login");
+const registerRouter = require("./routes/register");
 
 let app = express(); //to define that we're using express
 
@@ -41,6 +43,8 @@ app.use((err, req, res, next) => {
 
 // Use Routes
 app.use("/api/users", usersRouter);
+app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 
 // Process messages from app front-end
 app.post("/message", (req, res) => {
