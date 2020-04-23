@@ -1,12 +1,13 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
+const express = require('express');
+
 const router = express.Router();
-const User = require("../models/user.model"); // this parts gotta go
+const User = require('../models/user.model'); // this parts gotta go
 
 // @route  GET login
 // @desc   gets all users
 // @access Public
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await User.find().sort({ fullName: 1 });
     res.json(users);
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* the following post request is not needed as it is already in register.js and 
+/* the following post request is not needed as it is already in register.js and
     in users.js
 */
 // //finds a user by their username.
@@ -27,24 +28,24 @@ router.get("/", async (req, res) => {
 // @route POST login
 // @desc checks for user authentication
 // @access Public
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   await User.findOne({ fullName: req.body.fullName })
     .then((user) => {
       if (user == null) {
-        return res.status(400).json("Cannot find user");
+        return res.status(400).json('Cannot find user');
       }
       try {
-        bcrypt.compare(req.body.password, user.password, function (
+        bcrypt.compare(req.body.password, user.password, (
           err,
-          result
-        ) {
+          result,
+        ) => {
           if (result) {
-            res.send("Login Successful");
+            res.send('Login Successful');
           } else {
-            res.send("Login Unsuccessful");
+            res.send('Login Unsuccessful');
           }
         });
-      } catch {
+      } catch (e) {
         res.status(500).send();
       }
     })

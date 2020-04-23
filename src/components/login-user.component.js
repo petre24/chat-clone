@@ -1,46 +1,46 @@
-import React, { Component } from "react";
 import axios from 'axios';
+import React, { Component } from 'react';
 
 class LoginUser extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-        username: '',
-        password: '',
+      username: '',
+      password: '',
     };
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChangeUsername = (e) => {
+  onChangeUsername(e) {
     this.setState({
       username: e.target.value,
     });
-  };
+  }
 
-  onChangePassword = (e) => {
+  onChangePassword(e) {
     this.setState({
       password: e.target.value,
     });
-  };
+  }
 
-  onSubmit(e){
-    e.preventDefault()
+  onSubmit(e) {
+    e.preventDefault();
 
     const User = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
     };
 
-    axios.post("/login/", User).then((res) => console.log(res.data));
+    axios.post('/login/', User).then((res) => console.log(res.data));
 
-    window.location = "/chat";
-  };
+    window.location = '/chat';
+  }
 
- 
+
   render() {
-    return(
+    return (
       <div className="container">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
@@ -48,14 +48,14 @@ class LoginUser extends Component {
               <h1 className="h3 mb-3 font-weight-normal"> Please sign in</h1>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
-                <input 
+                <input
                   type="username"
                   className="form-control"
                   name="username"
                   placeholder="Enter username"
                   value={this.state.username}
                   onChange={this.onChange}
-                  />
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
@@ -66,7 +66,7 @@ class LoginUser extends Component {
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={this.onChange}
-                  />
+                />
               </div>
               <button
                 type="submit"
@@ -78,7 +78,7 @@ class LoginUser extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

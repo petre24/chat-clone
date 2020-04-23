@@ -1,11 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import RegisterUser from "./components/register-user.component";
-import LoginUser from "./components/login-user.component";
-import HomePage from "./components/home-page.component";
-import ChatScreen from "./components/chat-screen.component";
+import ChatScreen from './components/chat-screen.component';
+import HomePage from './components/home-page.component';
+import LoginUser from './components/login-user.component';
+import RegisterUser from './components/register-user.component';
 
 function App() {
   return (

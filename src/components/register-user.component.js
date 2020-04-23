@@ -1,7 +1,32 @@
-import React, { Component } from "react";
-import { Button, Container, Form, FormGroup, Label, Input } from "reactstrap";
+import axios from 'axios';
+import React, { Component } from 'react';
+import {
+  Button, Container, Form, FormGroup, Label, Input,
+} from 'reactstrap';
 
-import axios from "axios";
+
+const labelStyle = {
+  fontWeight: 'bold',
+};
+
+const inputStyle = {
+  width: '40vw',
+};
+
+const formStyle = {
+  float: 'left',
+  width: '50vw',
+  padding: '10px',
+  border: '1px gray solid',
+  borderRadius: '10px',
+  marginTop: '25px',
+};
+
+const titleStyle = {
+  padding: '0',
+  float: 'center',
+  margin: '10px 0px',
+};
 
 class RegisterUser extends Component {
   constructor(props) {
@@ -13,31 +38,31 @@ class RegisterUser extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      fullName: "",
-      email: "",
-      password: "",
+      fullName: '',
+      email: '',
+      password: '',
     };
   }
 
-  onChangeUsername = (e) => {
+  onChangeUsername(e) {
     this.setState({
       fullName: e.target.value,
     });
-  };
+  }
 
-  onChangeEmail = (e) => {
+  onChangeEmail(e) {
     this.setState({
       email: e.target.value,
     });
-  };
+  }
 
-  onChangePassword = (e) => {
+  onChangePassword(e) {
     this.setState({
       password: e.target.value,
     });
-  };
+  }
 
-  onSubmit = (e) => {
+  onSubmit(e) {
     e.preventDefault();
     const user = {
       fullName: this.state.fullName,
@@ -45,17 +70,17 @@ class RegisterUser extends Component {
       password: this.state.password,
     };
 
-    axios.post("/register/", user).then((res) => console.log(res.data));
+    axios.post('/register/', user).then((res) => console.log(res.data));
 
-    window.location = "/chat";
-  };
+    window.location = '/chat';
+  }
 
   render() {
     return (
       <>
         <Container style={titleStyle}>
           <h1>Create a Free Account</h1>
-          <h4>It's quick and painless.</h4>
+          <h4>{'It\'s quick and painless.'}</h4>
         </Container>
         <Container style={formStyle}>
           <Form onSubmit={this.onSubmit}>
@@ -110,28 +135,5 @@ class RegisterUser extends Component {
     );
   }
 }
-
-const labelStyle = {
-  fontWeight: "bold",
-};
-
-const inputStyle = {
-  width: "40vw",
-};
-
-const formStyle = {
-  float: "left",
-  width: "50vw",
-  padding: "10px",
-  border: "1px gray solid",
-  borderRadius: "10px",
-  marginTop: "25px",
-};
-
-const titleStyle = {
-  padding: "0",
-  float: "center",
-  margin: "10px 0px",
-};
 
 export default RegisterUser;
