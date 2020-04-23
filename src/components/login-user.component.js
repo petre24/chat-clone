@@ -33,7 +33,7 @@ class LoginUser extends Component {
       password: this.state.password
     };
 
-    axios.post("/login/", user).then((res) => console.log(res.data));
+    axios.post("/login/", User).then((res) => console.log(res.data));
 
     window.location = "/chat";
   };
@@ -64,7 +64,7 @@ class LoginUser extends Component {
                   className="form-control"
                   name="password"
                   placeholder="Enter password"
-                  value:{this.state.password}
+                  value={this.state.password}
                   onChange={this.onChange}
                   />
               </div>
