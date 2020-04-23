@@ -40,8 +40,10 @@ router.post("/", async (req, res) => {
         ) {
           if (result) {
             res.send("Login Successful");
+            console.log("Login Successful");
           } else {
             res.send("Login Unsuccessful");
+            console.log("Login Unsuccessful");
           }
         });
       } catch {
