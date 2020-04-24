@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import { Alert } from "reactstrap";
+
+import axios from "axios";
 
 class LoginUser extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      fullName: '',
-      password: '',
+      fullName: "",
+      password: "",
+      userStatus: true,
+      passStatus: true,
     };
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -25,36 +29,50 @@ class LoginUser extends Component {
     });
   };
 
-  onSubmit(e){
-    e.preventDefault()
+  onSubmit(e) {
+    e.preventDefault();
 
     const User = {
       fullName: this.state.fullName,
-      password: this.state.password
+      password: this.state.password,
     };
 
-    axios.post("/login", User).then((res) => console.log(res.data));
+    axios
+      .post("/login", User)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ userStatus: true });
 
-    window.location = "/chat";
-  };
+        if (res.data === "Login Unsuccessful") {
+          this.setState({ passStatus: false });
+        } else {
+          this.setState({ passStatus: true });
+          window.location = "/chat";
+        }
+      })
+      .catch((err) => {
+        this.setState({ userStatus: false });
+        console.log(err.response.status);
+      });
+  }
 
   render() {
-    return(
+    return (
       <div className="container">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
             <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Sign in or Bryson will Fire you</h1>
+              <h1 className="h3 mb-3 font-weight-normal">Sign in</h1>
               <div className="form-group">
                 <label htmlFor="fullName">Username</label>
-                <input 
+                <input
                   type="text"
                   className="form-control"
                   name="fullName"
                   placeholder="Enter username"
                   value={this.state.fullName}
                   onChange={this.onChangeUsername}
-                  />
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
@@ -65,7 +83,7 @@ class LoginUser extends Component {
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={this.onChangePassword}
-                  />
+                />
               </div>
               <button
                 type="submit"
@@ -74,10 +92,17 @@ class LoginUser extends Component {
                 Sign in
               </button>
             </form>
+            <br />
+            {!this.state.userStatus && (
+              <Alert color="danger">Error: User not found</Alert>
+            )}
+            {!this.state.passStatus && (
+              <Alert color="danger">Error: Incorrect Password</Alert>
+            )}
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
