@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
   await User.findOne({ fullName: req.body.fullName })
     .then((user) => {
       if (user == null) {
-        return res.status(400).json("Cannot find user");
+        return res.status(404).json("Cannot find user");
       }
       try {
         bcrypt.compare(req.body.password, user.password, function (
@@ -40,10 +40,8 @@ router.post("/", async (req, res) => {
         ) {
           if (result) {
             res.send("Login Successful");
-            console.log("Login Successful");
           } else {
             res.send("Login Unsuccessful");
-            console.log("Login Unsuccessful");
           }
         });
       } catch {
