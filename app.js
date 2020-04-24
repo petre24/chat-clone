@@ -12,6 +12,7 @@ const rtsIndex = require("./routes/index.router");
 const usersRouter = require("./routes/api/users");
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
+// const messageRouter = require("./routes/message");
 
 let app = express(); //to define that we're using express
 
@@ -45,13 +46,14 @@ app.use((err, req, res, next) => {
 app.use("/api/users", usersRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
+// app.use("/message", messageRouter);
 
 // Process messages from app front-end
-app.post("/message", (req, res) => {
-  const payload = req.body;
-  pusher.trigger("chat", "message", payload);
-  res.send(payload);
-});
+// app.post("/message", (req, res) => {
+//   const payload = req.body;
+//   pusher.trigger("chat", "message", payload);
+//   res.send(payload);
+// });
 
 // start server
 app.listen(process.env.PORT, () =>
