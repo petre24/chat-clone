@@ -1,0 +1,103 @@
+
+*{
+    box-sizing: boarder-box;
+}
+
+
+a{
+    color: #FA7C1E;
+    text-decoration: none;
+}
+
+
+
+.top-grey-wrapper{
+    background-color: #b2ffff;
+    background-size : cover;
+    margin-left:-550px;
+    margin-right:-800px;
+}
+
+.wrapper {
+    padding: 1.5em;
+    max-width : 1200px;
+    margin: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#outer-menu {
+    height: 84px;
+}
+
+.table {
+    display: table;
+    margin: 0;
+}
+li {
+    padding: 10px;
+    display:inline-block;
+}
+
+ul#horizontal-list {
+    min-width: 696px;
+    list-style: none;
+    padding-top: 15px;
+    padding-left: 20px;
+    margin-left:1100px;
+}
+
+ul#horizontal-list li {
+    display: inline;
+}
+
+.fml {
+    margin-left: 735px;
+}
+
+.img-with-text {
+    margin-left: auto;
+    margin-right:auto;
+    width: 1500px;
+}
+
+.subtext {
+    margin-left: 675px;
+}
+
+.subimg {
+    margin-left: 926px;
+}
+
+.signup-text {
+    margin-left: 400px;
+}
+
+.dark-wrapper {
+    background-color: #b2ffff;
+    background-size : cover;
+    margin-left:-1050px;
+    margin-right:-800px;
+}
+
+.msg {
+    margin-left: 630px;
+    
+}
+
+.functions {
+    margin-right: 1000px;
+}
+
+.botSignup {
+    width: 1500px;
+    margin-left: 680px;
+}
+
+.BootyholeMonday {
+    margin-left: 830px;
+}

@@ -8,5 +8,4 @@ class ChatScreen extends Component {
     );
   }
 }
-
 export default ChatScreen;
