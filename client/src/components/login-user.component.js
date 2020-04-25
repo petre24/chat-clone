@@ -47,6 +47,7 @@ class LoginUser extends Component {
           this.setState({ passStatus: false });
         } else {
           this.setState({ passStatus: true });
+          this.props.toggleLogin();
           window.location = "/chat";
         }
       })
